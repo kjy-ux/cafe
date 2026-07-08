@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>카페 - 따뜻한 한 잔의 여유</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="site-header__brand">☕ 카페</a>
+    <nav class="site-nav">
+      <a href="menus/list.html">메뉴</a>
+      <a href="my/index.html">마이페이지</a>
+      <a href="basket/list.html">장바구니<span class="cart-badge" id="cartBadge" hidden>0</span></a>
+      <a href="orders/list.html">주문내역</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 class="hero__title">따뜻한 한 잔의 여유<br>☕ 카페</h1>
+    <p class="hero__subtitle">신선한 원두와 정성으로 내린 커피, 그리고 어울리는 디저트를 만나보세요.</p>
+    <a href="menus/list.html" class="btn btn-primary btn-lg">메뉴 보러가기</a>
+  </section>
+
+  <main class="page-container">
+    <section class="featured">
+      <h2 class="featured__title">인기 메뉴</h2>
+      <div class="menu-grid" id="featuredGrid"></div>
+      <a href="menus/list.html" class="see-more">전체 메뉴 보기 →</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>☕ 카페 · 매일 08:00 - 22:00</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

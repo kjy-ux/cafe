@@ -5,6 +5,8 @@
   --color-primary-dark:   #3E2723;
   --color-secondary:      #D7CCC8;
   --color-accent:         #FFAB40;
+  --color-danger:         #C0392B;
+  --color-success:        #2E7D32;
 
   /* ===== 배경 ===== */
   --bg-page:        #FAF6F1;
@@ -52,6 +54,10 @@
   --glass-bg:       rgba(255, 255, 255, 0.45);
   --glass-border:   rgba(255, 255, 255, 0.6);
   --glass-blur:     blur(12px);
+
+  /* ===== 트랜지션 ===== */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
 }
 
 /* ===== 리셋 ===== */
@@ -91,4 +97,85 @@ button, input, textarea, select {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   line-height: 1.2;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* hidden 속성은 항상 최우선으로 적용 (display 지정한 컴포넌트 클래스에 밀리지 않도록) */
+[hidden] {
+  display: none !important;
+}
+
+::selection {
+  background: var(--color-primary-light);
+  color: var(--text-on-primary);
+}
+
+/* ===== 공통 페이지 컨테이너 ===== */
+.page-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: var(--sp-xl);
+}
+
+@media (max-width: 640px) {
+  .page-container {
+    padding: var(--sp-md);
+  }
+}
+
+/* ===== 주문 상태 배지 (getStatusBadgeClass, js/utils.js) ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px var(--sp-sm);
+  border-radius: 999px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge--pending   { background: var(--color-secondary);        color: var(--text-secondary); }
+.badge--confirmed { background: rgba(139, 105, 20, 0.15);      color: var(--color-primary-light); }
+.badge--preparing { background: rgba(92, 61, 46, 0.12);        color: var(--color-primary); }
+.badge--ready     { background: rgba(46, 125, 50, 0.12);       color: var(--color-success); }
+.badge--completed { background: var(--color-success);          color: var(--text-on-primary); }
+.badge--cancelled { background: rgba(192, 57, 43, 0.12);       color: var(--color-danger); }
+
+/* ===== 토스트 알림 (showToast, js/utils.js) ===== */
+.toast-container {
+  position: fixed;
+  bottom: var(--sp-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.toast {
+  padding: var(--sp-sm) var(--sp-lg);
+  border-radius: var(--border-radius-sm);
+  background: var(--color-primary-dark);
+  color: var(--text-on-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.toast.toast--show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.toast--error {
+  background: var(--color-danger);
 }

@@ -1,0 +1,298 @@
+/* ===== 사이트 헤더 ===== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-md) var(--sp-xl);
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.site-header__brand {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: 900;
+  color: var(--color-primary);
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--sp-lg);
+}
+
+.site-nav a {
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--color-primary);
+}
+
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  margin-left: 4px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+/* ===== 뒤로가기 ===== */
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--sp-lg);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+/* ===== 상세 카드 (글래스모피즘) ===== */
+.detail-card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: var(--sp-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+  padding: var(--sp-xl);
+}
+
+.detail-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.detail-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-card__no-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-secondary);
+  font-size: 64px;
+}
+
+.detail-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.detail-card__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.favorite-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding: var(--sp-xs) var(--sp-sm);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.favorite-btn.is-active {
+  color: var(--color-danger);
+  border-color: var(--color-danger);
+}
+
+/* ===== 옵션 선택 ===== */
+.option-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  margin-top: var(--sp-sm);
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.option-group__label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.option-group__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+.option-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding: var(--sp-xs) var(--sp-md);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-card);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.option-choice:has(input:checked) {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+.option-choice input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.detail-card__category {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.detail-card__name {
+  font-size: var(--font-size-3xl);
+  color: var(--text-primary);
+}
+
+.detail-card__price {
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.detail-card__description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-top: var(--sp-sm);
+}
+
+.detail-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  margin-top: auto;
+  padding-top: var(--sp-lg);
+  flex-wrap: wrap;
+}
+
+.detail-card__not-found {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--sp-3xl) 0;
+  color: var(--text-muted);
+}
+
+/* ===== 수량 스테퍼 ===== */
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  padding: var(--sp-xs);
+}
+
+.qty-stepper button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.qty-stepper button:hover {
+  background: var(--bg-card-hover);
+}
+
+.qty-stepper span {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ===== 버튼 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-sm) var(--sp-lg);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 640px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-sm);
+    padding: var(--sp-md);
+  }
+  .site-nav {
+    width: 100%;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+  }
+  .detail-card {
+    grid-template-columns: 1fr;
+  }
+  .detail-card__image {
+    aspect-ratio: 16 / 9;
+  }
+}

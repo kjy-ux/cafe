@@ -1,0 +1,216 @@
+/* ===== 관리자 사이드바 레이아웃 ===== */
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+.admin-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--color-primary-dark);
+  color: var(--text-on-primary);
+  padding: var(--sp-xl) var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xl);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.admin-sidebar__brand {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.admin-sidebar__nav a {
+  color: var(--text-on-primary);
+  opacity: 0.75;
+  font-weight: 500;
+  padding: var(--sp-sm) var(--sp-md);
+  border-radius: var(--border-radius-sm);
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.admin-sidebar__nav a:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-sidebar__nav a.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-accent);
+}
+
+.admin-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===== 뒤로가기 ===== */
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--sp-lg);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+/* ===== 상세 카드 (글래스모피즘) ===== */
+.detail-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--sp-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+  padding: var(--sp-xl);
+}
+
+.detail-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.detail-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-card__no-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-secondary);
+  font-size: 64px;
+}
+
+.detail-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.detail-card__category {
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.detail-card__name {
+  font-size: var(--font-size-3xl);
+  color: var(--text-primary);
+}
+
+.detail-card__price {
+  font-size: var(--font-size-2xl);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.detail-card__description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-top: var(--sp-sm);
+}
+
+.detail-card__actions {
+  display: flex;
+  gap: var(--sp-sm);
+  margin-top: auto;
+  padding-top: var(--sp-lg);
+}
+
+.detail-card__not-found {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--sp-3xl) 0;
+  color: var(--text-muted);
+}
+
+/* ===== 버튼 ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-sm) var(--sp-md);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+  .admin-shell {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-md);
+    gap: var(--sp-sm);
+  }
+  .admin-sidebar__brand {
+    white-space: nowrap;
+  }
+  .admin-sidebar__nav {
+    flex-direction: row;
+    gap: var(--sp-xs);
+  }
+  .admin-sidebar__nav a {
+    padding: var(--sp-xs) var(--sp-sm);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-card {
+    grid-template-columns: 1fr;
+  }
+  .detail-card__image {
+    aspect-ratio: 16 / 9;
+  }
+}

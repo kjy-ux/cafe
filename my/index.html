@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마이페이지 - 카페</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="../index.html" class="site-header__brand">☕ 카페</a>
+    <nav class="site-nav">
+      <a href="../menus/list.html">메뉴</a>
+      <a href="index.html" class="active">마이페이지</a>
+      <a href="../basket/list.html">장바구니<span class="cart-badge" id="cartBadge" hidden>0</span></a>
+      <a href="../orders/list.html">주문내역</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <h1 class="page-title">마이페이지</h1>
+
+    <section class="my-summary">
+      <div class="my-summary__card">
+        <span class="my-summary__label">총 주문</span>
+        <span class="my-summary__value" id="totalOrders">0건</span>
+      </div>
+      <div class="my-summary__card">
+        <span class="my-summary__label">누적 결제 금액</span>
+        <span class="my-summary__value" id="totalSpent">0원</span>
+      </div>
+    </section>
+
+    <section class="my-shortcuts">
+      <a href="../menus/list.html" class="my-shortcut">☕ 메뉴 보러가기</a>
+      <a href="../basket/list.html" class="my-shortcut">🛒 장바구니 보기</a>
+    </section>
+
+    <section class="my-favorites">
+      <div class="my-recent__header">
+        <h2>찜한 메뉴</h2>
+        <a href="../menus/list.html">메뉴 보러가기 →</a>
+      </div>
+      <div class="menu-grid" id="favoriteGrid"></div>
+      <p class="empty-state" id="favoriteEmptyState" hidden>아직 찜한 메뉴가 없습니다.</p>
+    </section>
+
+    <section class="my-recent">
+      <div class="my-recent__header">
+        <h2>최근 주문</h2>
+        <a href="../orders/list.html">전체보기 →</a>
+      </div>
+      <div class="order-list" id="recentOrders"></div>
+      <p class="empty-state" id="emptyState" hidden>아직 주문 내역이 없습니다.</p>
+    </section>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

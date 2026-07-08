@@ -1,0 +1,189 @@
+/* ===== 관리자 사이드바 레이아웃 ===== */
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+  align-items: stretch;
+}
+
+.admin-sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--color-primary-dark);
+  color: var(--text-on-primary);
+  padding: var(--sp-xl) var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xl);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.admin-sidebar__brand {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.admin-sidebar__nav a {
+  color: var(--text-on-primary);
+  opacity: 0.75;
+  font-weight: 500;
+  padding: var(--sp-sm) var(--sp-md);
+  border-radius: var(--border-radius-sm);
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.admin-sidebar__nav a:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-sidebar__nav a.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-accent);
+}
+
+.admin-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ===== 뒤로가기 ===== */
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--sp-lg);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+/* ===== 주문 상세 (글래스모피즘) ===== */
+.order-detail {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+  padding: var(--sp-xl);
+}
+
+.order-detail__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-lg);
+  padding-bottom: var(--sp-lg);
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+}
+
+.order-detail__id {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-top: var(--sp-sm);
+}
+
+.order-detail__date {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.order-detail__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-lg);
+}
+
+.order-detail__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-primary);
+}
+
+.order-detail__item-name {
+  color: var(--text-secondary);
+}
+
+.order-detail__item-options {
+  color: var(--color-primary-light);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.order-detail__item-subtotal {
+  font-weight: 600;
+}
+
+.order-detail__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--border-color);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.order-detail__not-found {
+  text-align: center;
+  padding: var(--sp-3xl) 0;
+  color: var(--text-muted);
+}
+
+/* ===== 상태 변경 셀렉트 ===== */
+.status-select {
+  padding: var(--sp-xs) var(--sp-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 768px) {
+  .admin-shell {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .admin-sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--sp-md);
+    gap: var(--sp-sm);
+  }
+  .admin-sidebar__brand {
+    white-space: nowrap;
+  }
+  .admin-sidebar__nav {
+    flex-direction: row;
+    gap: var(--sp-xs);
+  }
+  .admin-sidebar__nav a {
+    padding: var(--sp-xs) var(--sp-sm);
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 640px) {
+}
