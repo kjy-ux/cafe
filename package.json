@@ -1,0 +1,25 @@
+{
+  "name": "cafe-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -l 3111",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjy-ux/cafe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kjy-ux/cafe/issues"
+  },
+  "homepage": "https://github.com/kjy-ux/cafe#readme",
+  "dependencies": {
+    "serve": "^14.2.6"
+  }
+}
