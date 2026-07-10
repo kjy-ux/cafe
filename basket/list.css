@@ -93,6 +93,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: sepia(14%) saturate(1.12) brightness(1.02) contrast(1.02);
 }
 
 .basket-item__no-image {

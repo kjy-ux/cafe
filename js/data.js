@@ -10,24 +10,24 @@ const CATEGORIES = [
 ];
 
 const MENU_ITEMS = [
-  { id: 1, name: '에스프레소', category: 'coffee', price: 2500, description: '진한 원샷 에스프레소', image: '' },
-  { id: 2, name: '아메리카노', category: 'coffee', price: 3500, description: '물과 에스프레소의 조화', image: '' },
-  { id: 3, name: '카페라떼', category: 'coffee', price: 4200, description: '부드러운 우유와 에스프레소', image: '' },
-  { id: 4, name: '카푸치노', category: 'coffee', price: 4500, description: '우유 거품이 풍부한 카푸치노', image: '' },
-  { id: 5, name: '모카', category: 'coffee', price: 4800, description: '초콜릿과 커피의 만남', image: '' },
-  { id: 6, name: '바닐라 라떼', category: 'coffee', price: 4800, description: '바닐라 시럽이 들어간 라떼', image: '' },
-  { id: 7, name: '녹차', category: 'tea', price: 3200, description: '순수한 일본 녹차', image: '' },
-  { id: 8, name: '아이스티', category: 'tea', price: 3500, description: '상쾌한 레몬 아이스티', image: '' },
-  { id: 9, name: '캐모마일', category: 'tea', price: 3500, description: '천연 허브의 은은한 향', image: '' },
-  { id: 10, name: '말차 라떼', category: 'tea', price: 4500, description: '진한 말차와 우유의 조화', image: '' },
-  { id: 11, name: '크로아상', category: 'bakery', price: 2800, description: '바삭한 버터 크로아상', image: '' },
-  { id: 12, name: '번', category: 'bakery', price: 2500, description: '부드러운 밀크 번', image: '' },
-  { id: 13, name: '머핀', category: 'bakery', price: 3000, description: '블루베리 머핀', image: '' },
-  { id: 14, name: '쿠키', category: 'bakery', price: 2200, description: '초콜릿칩 쿠키', image: '' },
-  { id: 15, name: '티라미수', category: 'dessert', price: 5500, description: '전통 이탈리아 티라미수', image: '' },
-  { id: 16, name: '츄러스', category: 'dessert', price: 4800, description: '크리스피 바깥, 부드러운 속', image: '' },
-  { id: 17, name: '젤라토', category: 'dessert', price: 4200, description: '이탈리아산 아이스크림', image: '' },
-  { id: 18, name: '생크림 케이크', category: 'dessert', price: 5200, description: '스트로베리 생크림 케이크', image: '' }
+  { id: 1, name: '에스프레소', category: 'coffee', price: 2500, description: '진한 원샷 에스프레소', image: '/images/menu/1.jpg' },
+  { id: 2, name: '아메리카노', category: 'coffee', price: 3500, description: '물과 에스프레소의 조화', image: '/images/menu/2.jpg' },
+  { id: 3, name: '카페라떼', category: 'coffee', price: 4200, description: '부드러운 우유와 에스프레소', image: '/images/menu/3.jpg' },
+  { id: 4, name: '카푸치노', category: 'coffee', price: 4500, description: '우유 거품이 풍부한 카푸치노', image: '/images/menu/4.jpg' },
+  { id: 5, name: '모카', category: 'coffee', price: 4800, description: '초콜릿과 커피의 만남', image: '/images/menu/5.jpg' },
+  { id: 6, name: '바닐라 라떼', category: 'coffee', price: 4800, description: '바닐라 시럽이 들어간 라떼', image: '/images/menu/6.jpg' },
+  { id: 7, name: '녹차', category: 'tea', price: 3200, description: '순수한 일본 녹차', image: '/images/menu/7.jpg' },
+  { id: 8, name: '아이스티', category: 'tea', price: 3500, description: '상쾌한 레몬 아이스티', image: '/images/menu/8.jpg' },
+  { id: 9, name: '캐모마일', category: 'tea', price: 3500, description: '천연 허브의 은은한 향', image: '/images/menu/9.jpg' },
+  { id: 10, name: '말차 라떼', category: 'tea', price: 4500, description: '진한 말차와 우유의 조화', image: '/images/menu/10.jpg' },
+  { id: 11, name: '크로아상', category: 'bakery', price: 2800, description: '바삭한 버터 크로아상', image: '/images/menu/11.jpg' },
+  { id: 12, name: '번', category: 'bakery', price: 2500, description: '부드러운 밀크 번', image: '/images/menu/12.jpg' },
+  { id: 13, name: '머핀', category: 'bakery', price: 3000, description: '블루베리 머핀', image: '/images/menu/13.jpg' },
+  { id: 14, name: '쿠키', category: 'bakery', price: 2200, description: '초콜릿칩 쿠키', image: '/images/menu/14.jpg' },
+  { id: 15, name: '티라미수', category: 'dessert', price: 5500, description: '전통 이탈리아 티라미수', image: '/images/menu/15.jpg' },
+  { id: 16, name: '츄러스', category: 'dessert', price: 4800, description: '크리스피 바깥, 부드러운 속', image: '/images/menu/16.jpg' },
+  { id: 17, name: '젤라토', category: 'dessert', price: 4200, description: '이탈리아산 아이스크림', image: '/images/menu/17.jpg' },
+  { id: 18, name: '생크림 케이크', category: 'dessert', price: 5200, description: '스트로베리 생크림 케이크', image: '/images/menu/18.jpg' }
 ];
 
 // ============================================

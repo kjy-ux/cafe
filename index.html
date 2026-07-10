@@ -23,21 +23,124 @@
   </header>
 
   <section class="hero">
-    <h1 class="hero__title">따뜻한 한 잔의 여유<br>☕ 카페</h1>
-    <p class="hero__subtitle">신선한 원두와 정성으로 내린 커피, 그리고 어울리는 디저트를 만나보세요.</p>
-    <a href="menus/list.html" class="btn btn-primary btn-lg">메뉴 보러가기</a>
+    <div class="hero__content">
+      <span class="hero__eyebrow">☕ 2024 NEW OPEN · 강남점</span>
+      <h1 class="hero__title">따뜻한 한 잔의 여유<br>☕ 카페에서 시작하세요</h1>
+      <p class="hero__subtitle">신선한 원두와 정성으로 내린 커피, 그리고 어울리는 디저트를 만나보세요.</p>
+      <div class="hero__actions">
+        <a href="menus/list.html" class="btn btn-accent btn-lg">메뉴 보러가기</a>
+        <a href="#about" class="btn btn-outline btn-lg">매장 안내</a>
+      </div>
+      <dl class="hero__stats">
+        <div class="hero__stat">
+          <dt>15만+</dt>
+          <dd>누적 판매잔</dd>
+        </div>
+        <div class="hero__stat">
+          <dt>6개국</dt>
+          <dd>엄선 원두 산지</dd>
+        </div>
+        <div class="hero__stat">
+          <dt>4.9★</dt>
+          <dd>고객 만족도</dd>
+        </div>
+      </dl>
+    </div>
   </section>
 
-  <main class="page-container">
+  <main>
+    <section class="about" id="about">
+      <div class="page-container">
+        <p class="section-eyebrow">WHY ☕ 카페</p>
+        <h2 class="section-title">이런 점이 다릅니다</h2>
+        <div class="about-grid">
+          <article class="about-card">
+            <span class="about-card__icon">🌱</span>
+            <h3>신선한 원두</h3>
+            <p>로컬 로스터리와 협업해 매주 갓 볶은 원두만 사용합니다.</p>
+          </article>
+          <article class="about-card">
+            <span class="about-card__icon">🔥</span>
+            <h3>정성 로스팅</h3>
+            <p>원두 본연의 향을 살리는 ☕ 카페만의 로스팅 노하우.</p>
+          </article>
+          <article class="about-card">
+            <span class="about-card__icon">🛋️</span>
+            <h3>아늑한 공간</h3>
+            <p>오래 머물고 싶어지는 따뜻한 우드톤 인테리어.</p>
+          </article>
+          <article class="about-card">
+            <span class="about-card__icon">⚡</span>
+            <h3>빠른 픽업</h3>
+            <p>미리 주문하고 줄 서지 않고 바로 픽업하세요.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="featured">
-      <h2 class="featured__title">인기 메뉴</h2>
-      <div class="menu-grid" id="featuredGrid"></div>
-      <a href="menus/list.html" class="see-more">전체 메뉴 보기 →</a>
+      <div class="page-container">
+        <p class="section-eyebrow">MENU</p>
+        <h2 class="featured__title">인기 메뉴</h2>
+        <div class="menu-grid" id="featuredGrid"></div>
+        <a href="menus/list.html" class="see-more">전체 메뉴 보기 →</a>
+      </div>
+    </section>
+
+    <section class="reviews">
+      <div class="page-container">
+        <p class="section-eyebrow">REVIEW</p>
+        <h2 class="section-title">고객들의 이야기</h2>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <p class="review-card__stars">★★★★★</p>
+            <p class="review-card__quote">"원두 향이 진짜 다르고, 라떼 거품이 항상 부드러워요. 동네에 이런 카페 있다는 게 행운이에요."</p>
+            <p class="review-card__author">김O진 · 재방문 12회</p>
+          </article>
+          <article class="review-card">
+            <p class="review-card__stars">★★★★★</p>
+            <p class="review-card__quote">"미리 주문하고 가면 바로 픽업할 수 있어서 출근길에 항상 들러요. 디저트도 항상 신선해요."</p>
+            <p class="review-card__author">박O수 · 재방문 8회</p>
+          </article>
+          <article class="review-card">
+            <p class="review-card__stars">★★★★☆</p>
+            <p class="review-card__quote">"자리도 넓고 조용해서 공부하기 좋아요. 커스터마이징 옵션이 다양한 것도 마음에 들어요."</p>
+            <p class="review-card__author">이O민 · 재방문 5회</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="page-container cta-banner__inner">
+        <h2>지금 바로 첫 잔을 만나보세요</h2>
+        <p>따뜻한 한 잔의 여유, 지금 주문하면 5분 안에 준비됩니다.</p>
+        <a href="menus/list.html" class="btn btn-accent btn-lg">메뉴 둘러보기</a>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>☕ 카페 · 매일 08:00 - 22:00</p>
+    <div class="page-container site-footer__inner">
+      <div class="footer-col">
+        <p class="footer-col__brand">☕ 카페</p>
+        <p>매일 08:00 - 22:00</p>
+        <p>연중무휴 (설·추석 당일 제외)</p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">바로가기</p>
+        <a href="menus/list.html">메뉴</a>
+        <a href="basket/list.html">장바구니</a>
+        <a href="orders/list.html">주문내역</a>
+        <a href="my/index.html">마이페이지</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col__title">오시는 길</p>
+        <p>서울특별시 강남구 테헤란로 123</p>
+        <p>02-1234-5678</p>
+      </div>
+    </div>
+    <p class="site-footer__copyright">© 2024 ☕ 카페. All rights reserved.</p>
   </footer>
 
   <script src="js/data.js"></script>

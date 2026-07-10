@@ -74,6 +74,7 @@
 }
 
 .detail-card__image {
+  position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: var(--border-radius);
@@ -84,6 +85,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: sepia(14%) saturate(1.12) brightness(1.02) contrast(1.02);
+}
+
+.detail-card__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(92, 61, 46, 0.10) 0%, rgba(92, 61, 46, 0.02) 45%, rgba(92, 61, 46, 0.14) 100%);
+  pointer-events: none;
 }
 
 .detail-card__no-image {
