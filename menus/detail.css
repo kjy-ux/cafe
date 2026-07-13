@@ -173,7 +173,8 @@
 .detail-card__image {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
+  min-height: 320px;
   border-radius: var(--border-radius);
   overflow: hidden;
 }
@@ -449,6 +450,8 @@
     grid-template-columns: 1fr;
   }
   .detail-card__image {
+    height: auto;
+    min-height: 0;
     aspect-ratio: 16 / 9;
   }
   .option-groups {
