@@ -59,19 +59,21 @@
   color: var(--color-primary);
 }
 
+/* 이 페이지는 사이드바가 있어 기본 page-container보다 넓게 사용 */
+.page-container {
+  max-width: 1240px;
+}
+
 /* ===== 상세 페이지 레이아웃 (카드 + 내 레시피 패널) ===== */
 .detail-layout {
   display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: var(--sp-xl);
+  grid-template-columns: 1fr 300px;
+  gap: var(--sp-3xl);
   align-items: start;
 }
 
 /* ===== 내가 만들었던 음료 패널 ===== */
 .my-recipes-panel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-md);
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
@@ -79,14 +81,35 @@
 }
 
 .my-recipes-panel__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: var(--font-size-lg);
   color: var(--text-primary);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.my-recipes-panel__title::-webkit-details-marker {
+  display: none;
+}
+
+.my-recipes-panel__title::after {
+  content: '▾';
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.my-recipes-panel[open] .my-recipes-panel__title::after {
+  transform: rotate(180deg);
 }
 
 .my-recipes-panel__list {
   display: flex;
   flex-direction: column;
   gap: var(--sp-sm);
+  margin-top: var(--sp-md);
 }
 
 .my-recipe-chip {
@@ -206,9 +229,9 @@
 
 /* ===== 옵션 선택 ===== */
 .option-groups {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-md);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-md) var(--sp-lg);
   margin-top: var(--sp-sm);
 }
 
@@ -241,6 +264,7 @@
   cursor: pointer;
   font-size: var(--font-size-sm);
   color: var(--text-secondary);
+  white-space: nowrap;
   transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
@@ -421,6 +445,9 @@
     aspect-ratio: 16 / 9;
   }
   .detail-layout {
+    grid-template-columns: 1fr;
+  }
+  .option-groups {
     grid-template-columns: 1fr;
   }
 }
