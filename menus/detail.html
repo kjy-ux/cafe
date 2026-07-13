@@ -24,7 +24,13 @@
 
   <main class="page-container">
     <a href="list.html" class="back-link">← 메뉴 목록으로</a>
-    <div class="detail-card" id="detailCard"></div>
+    <div class="detail-layout">
+      <div class="detail-card" id="detailCard"></div>
+      <aside class="my-recipes-panel" id="myRecipesPanel" hidden>
+        <h2 class="my-recipes-panel__title">내가 만들었던 음료</h2>
+        <div class="my-recipes-panel__list" id="myRecipesList"></div>
+      </aside>
+    </div>
   </main>
 
   <script src="../js/data.js"></script>

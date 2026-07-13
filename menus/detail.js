@@ -60,6 +60,47 @@ function updatePriceDisplay(menu) {
   $('#totalPrice').textContent = formatPrice(unitPrice * quantity);
 }
 
+function applyRecipeToForm(menu, recipe) {
+  Object.entries(recipe.options).forEach(([key, value]) => {
+    const input = document.querySelector(`input[name="opt-${key}"][value="${value}"]`);
+    if (input) input.checked = true;
+  });
+  updatePriceDisplay(menu);
+  $$('.my-recipe-chip').forEach(chip => {
+    chip.classList.toggle('is-active', chip.dataset.recipeId === recipe.id);
+  });
+  showToast(`'${recipe.name}' 조합을 불러왔습니다.`);
+}
+
+function renderMyRecipesPanel(menu) {
+  const panel = $('#myRecipesPanel');
+  const list = $('#myRecipesList');
+  const recipes = getRecipes().filter(r => r.menuId === menu.id).reverse();
+
+  if (recipes.length === 0) {
+    panel.hidden = true;
+    return;
+  }
+  panel.hidden = false;
+
+  renderList(list, recipes, (recipe) => {
+    const label = formatOptionsLabel(recipe.category, recipe.options);
+    return `
+      <button type="button" class="my-recipe-chip" data-recipe-id="${recipe.id}">
+        <span class="my-recipe-chip__name">${escapeHtml(recipe.name)}</span>
+        <span class="my-recipe-chip__detail">${escapeHtml(label)} · ${formatPrice(recipe.unitPrice)}</span>
+      </button>
+    `;
+  });
+
+  $$('.my-recipe-chip', list).forEach(chip => {
+    chip.addEventListener('click', () => {
+      const recipe = recipes.find(r => r.id === chip.dataset.recipeId);
+      if (recipe) applyRecipeToForm(menu, recipe);
+    });
+  });
+}
+
 function renderMenuDetail(container, menu) {
   container.innerHTML = `
     <div class="detail-card__image">
@@ -141,8 +182,9 @@ function renderMenuDetail(container, menu) {
       }
       const options = getSelectedOptions(menu);
       addRecipe(name, menu, options);
-      showToast(`'${name}' 레시피로 저장했습니다. 마이페이지에서 확인하세요.`);
+      showToast(`'${name}' 레시피로 저장했습니다.`);
       nameInput.value = '';
+      renderMyRecipesPanel(menu);
     });
   }
 }
@@ -158,6 +200,7 @@ function init() {
     return;
   }
   renderMenuDetail(container, menu);
+  renderMyRecipesPanel(menu);
 }
 
 document.addEventListener('DOMContentLoaded', init);

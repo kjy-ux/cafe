@@ -59,6 +59,73 @@
   color: var(--color-primary);
 }
 
+/* ===== 상세 페이지 레이아웃 (카드 + 내 레시피 패널) ===== */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: var(--sp-xl);
+  align-items: start;
+}
+
+/* ===== 내가 만들었던 음료 패널 ===== */
+.my-recipes-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--sp-lg);
+}
+
+.my-recipes-panel__title {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+}
+
+.my-recipes-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.my-recipe-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: var(--sp-sm) var(--sp-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background: #fff;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.my-recipe-chip:hover {
+  border-color: var(--color-primary);
+  background: var(--bg-card-hover);
+}
+
+.my-recipe-chip.is-active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--text-on-primary);
+}
+
+.my-recipe-chip__name {
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.my-recipe-chip__detail {
+  font-size: var(--font-size-xs);
+  color: inherit;
+  opacity: 0.75;
+}
+
 /* ===== 상세 카드 (글래스모피즘) ===== */
 .detail-card {
   display: grid;
@@ -352,5 +419,8 @@
   }
   .detail-card__image {
     aspect-ratio: 16 / 9;
+  }
+  .detail-layout {
+    grid-template-columns: 1fr;
   }
 }
