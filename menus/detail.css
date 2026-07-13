@@ -59,25 +59,32 @@
   color: var(--color-primary);
 }
 
-/* 이 페이지는 사이드바가 있어 기본 page-container보다 넓게 사용 */
-.page-container {
-  max-width: 1240px;
-}
-
-/* ===== 상세 페이지 레이아웃 (카드 + 내 레시피 패널) ===== */
+/* ===== 상세 페이지 레이아웃 =====
+   음료 카드는 항상 page-container 기준으로 단독 중앙 정렬.
+   내 레시피 패널은 넓은 화면에서만 카드 오른쪽 바깥 여백에 별도로 붙임 (중앙 정렬 계산에 영향 안 줌) */
 .detail-layout {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: var(--sp-3xl);
-  align-items: start;
+  position: relative;
 }
 
 /* ===== 내가 만들었던 음료 패널 ===== */
 .my-recipes-panel {
+  margin-top: var(--sp-xl);
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: var(--sp-lg);
+}
+
+/* 넓은 화면에서만: 음료 카드는 그대로 두고, 패널을 카드 오른쪽 바깥 여백에 별도로 배치 */
+@media (min-width: 1400px) {
+  .my-recipes-panel {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-top: 0;
+    margin-left: var(--sp-2xl);
+    width: 300px;
+  }
 }
 
 .my-recipes-panel__title {
@@ -443,9 +450,6 @@
   }
   .detail-card__image {
     aspect-ratio: 16 / 9;
-  }
-  .detail-layout {
-    grid-template-columns: 1fr;
   }
   .option-groups {
     grid-template-columns: 1fr;
