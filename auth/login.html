@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>메뉴 - 카페</title>
+<title>로그인 - 카페</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/variables.css">
-<link rel="stylesheet" href="list.css">
+<link rel="stylesheet" href="auth.css">
 </head>
 <body>
   <header class="site-header">
     <a href="../index.html" class="site-header__brand">☕ 카페</a>
     <nav class="site-nav">
-      <a href="list.html" class="active">메뉴</a>
+      <a href="../menus/list.html">메뉴</a>
       <a href="../my/index.html">마이페이지</a>
       <a href="../basket/list.html">장바구니<span class="cart-badge" id="cartBadge" hidden>0</span></a>
       <a href="../orders/list.html">주문내역</a>
@@ -23,23 +23,24 @@
     <div class="auth-nav" id="authNav"></div>
   </header>
 
-  <main class="page-container">
-    <h1 class="page-title">메뉴</h1>
-
-    <div class="menu-layout">
-      <aside class="menu-sidebar">
-        <input type="search" id="searchInput" class="search-input" placeholder="메뉴 이름으로 검색">
-        <div class="filter-tabs" id="filterTabs">
-          <button class="filter-tab active" data-category="all">전체</button>
-        </div>
-      </aside>
-
-      <div class="menu-grid" id="menuGrid"></div>
-    </div>
+  <main class="page-container auth-page">
+    <form class="auth-card" id="loginForm">
+      <h1 class="auth-card__title">로그인</h1>
+      <div class="form-group">
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">로그인</button>
+      <p class="auth-card__switch">아직 계정이 없으신가요? <a href="signup.html">회원가입</a></p>
+    </form>
   </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/utils.js"></script>
-  <script src="list.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>

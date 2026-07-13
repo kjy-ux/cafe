@@ -449,6 +449,84 @@ function handleRecipeListClick(e) {
 }
 
 // ============================================
+// 회원가입 / 로그인 (localStorage 흉내내기 - 실제 인증 아님, 비밀번호 평문 저장)
+// ============================================
+
+const USERS_KEY = 'cafe_users';
+const CURRENT_USER_KEY = 'cafe_current_user';
+
+function getUsers() {
+  const data = localStorage.getItem(USERS_KEY);
+  return data ? JSON.parse(data) : [];
+}
+
+function saveUsers(users) {
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+function findUserByEmail(email) {
+  return getUsers().find(u => u.email.toLowerCase() === email.toLowerCase());
+}
+
+function getCurrentUser() {
+  const email = localStorage.getItem(CURRENT_USER_KEY);
+  return email ? findUserByEmail(email) : null;
+}
+
+function signup(name, email, password) {
+  if (findUserByEmail(email)) {
+    return { ok: false, message: '이미 가입된 이메일입니다.' };
+  }
+  const users = getUsers();
+  users.push({ id: generateId(), name, email, password });
+  saveUsers(users);
+  localStorage.setItem(CURRENT_USER_KEY, email);
+  return { ok: true };
+}
+
+function login(email, password) {
+  const user = findUserByEmail(email);
+  if (!user || user.password !== password) {
+    return { ok: false, message: '이메일 또는 비밀번호가 올바르지 않습니다.' };
+  }
+  localStorage.setItem(CURRENT_USER_KEY, user.email);
+  return { ok: true };
+}
+
+function logout() {
+  localStorage.removeItem(CURRENT_USER_KEY);
+}
+
+// ---- 헤더 로그인/회원가입 또는 사용자명/로그아웃 표시 (id="authNav" 요소가 있는 페이지에서 사용) ----
+function renderAuthNav() {
+  const container = $('#authNav');
+  if (!container) return;
+
+  const brand = $('.site-header__brand');
+  const prefix = brand ? brand.getAttribute('href').replace(/index\.html$/, '') : '';
+  const user = getCurrentUser();
+
+  if (user) {
+    container.innerHTML = `
+      <span class="auth-nav__user">${escapeHtml(user.name)}님</span>
+      <button type="button" class="auth-nav__logout" id="logoutBtn">로그아웃</button>
+    `;
+    $('#logoutBtn', container).addEventListener('click', () => {
+      logout();
+      renderAuthNav();
+      showToast('로그아웃 되었습니다.');
+    });
+  } else {
+    container.innerHTML = `
+      <a href="${prefix}auth/login.html">로그인</a>
+      <a href="${prefix}auth/signup.html">회원가입</a>
+    `;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', renderAuthNav);
+
+// ============================================
 // DOM 헬퍼
 // ============================================
 

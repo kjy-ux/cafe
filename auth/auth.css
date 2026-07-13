@@ -85,92 +85,64 @@
   color: var(--color-primary);
 }
 
-/* ===== 페이지 타이틀 ===== */
-.page-title {
-  font-size: var(--font-size-2xl);
-  color: var(--text-primary);
-  margin-bottom: var(--sp-lg);
+/* ===== 로그인 / 회원가입 카드 ===== */
+.auth-page {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--sp-3xl);
+  padding-bottom: var(--sp-3xl);
 }
 
-/* ===== 주문 목록 ===== */
-.order-list {
+.auth-card {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-md);
-}
-
-.order-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-sm);
+  gap: var(--sp-lg);
+  width: 100%;
+  max-width: 400px;
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--shadow-sm);
-  padding: var(--sp-md) var(--sp-lg);
-  transition: box-shadow var(--transition-fast);
-}
-
-.order-card:hover {
   box-shadow: var(--shadow-md);
+  padding: var(--sp-xl);
 }
 
-.order-card__link {
-  display: block;
-  color: inherit;
-}
-
-.order-card__reorder {
-  align-self: flex-end;
-}
-
-.order-card__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: var(--sp-sm);
-}
-
-.order-card__date {
-  font-size: var(--font-size-sm);
-  color: var(--text-muted);
-}
-
-.order-card__items {
-  color: var(--text-secondary);
-  margin-bottom: var(--sp-xs);
-}
-
-.order-card__total {
-  font-weight: 700;
-  color: var(--color-primary);
-}
-
-.empty-state {
-  text-align: center;
-  padding: var(--sp-3xl) var(--sp-lg);
-}
-
-.empty-state__icon {
-  display: block;
-  font-size: 48px;
-  margin-bottom: var(--sp-md);
-  opacity: 0.55;
-}
-
-.empty-state__title {
-  font-weight: 700;
-  font-size: var(--font-size-lg);
+.auth-card__title {
+  font-size: var(--font-size-2xl);
   color: var(--text-primary);
-  margin-bottom: var(--sp-xs);
+  text-align: center;
 }
 
-.empty-state__desc {
-  color: var(--text-muted);
+.auth-card__switch {
+  text-align: center;
   font-size: var(--font-size-sm);
-  margin-bottom: var(--sp-lg);
+  color: var(--text-secondary);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.form-group label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-group input {
+  padding: var(--sp-sm) var(--sp-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus {
+  border-color: var(--color-primary);
 }
 
 /* ===== 버튼 ===== */
@@ -178,7 +150,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--sp-sm) var(--sp-md);
+  padding: var(--sp-sm) var(--sp-lg);
   border-radius: var(--border-radius-sm);
   border: none;
   cursor: pointer;
@@ -197,12 +169,8 @@
   color: var(--text-on-primary);
 }
 
-.btn-sm {
-  padding: var(--sp-xs) var(--sp-md);
-  font-size: var(--font-size-sm);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
+.btn-block {
+  width: 100%;
 }
 
 /* ===== 반응형 ===== */
@@ -217,5 +185,8 @@
     width: 100%;
     justify-content: space-between;
     font-size: var(--font-size-sm);
+  }
+  .auth-card {
+    padding: var(--sp-lg);
   }
 }

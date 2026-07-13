@@ -47,6 +47,44 @@
   vertical-align: middle;
 }
 
+.auth-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  margin-left: var(--sp-lg);
+  font-size: var(--font-size-sm);
+}
+
+.auth-nav a {
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.auth-nav a:hover {
+  color: var(--color-primary);
+}
+
+.auth-nav__user {
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.auth-nav__logout {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--text-muted);
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth-nav__logout:hover {
+  color: var(--color-primary);
+}
+
 /* ===== 페이지 타이틀 ===== */
 .page-title {
   font-size: var(--font-size-2xl);
