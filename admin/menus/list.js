@@ -2,6 +2,8 @@
 // 관리자 - 메뉴 목록
 // ============================================
 
+requireAdmin();
+
 let currentCategory = 'all';
 
 function renderFilterTabs() {

@@ -2,6 +2,8 @@
 // 관리자 - 메뉴 상세
 // ============================================
 
+requireAdmin();
+
 function getMenuIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return Number(params.get('id'));

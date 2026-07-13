@@ -2,6 +2,8 @@
 // 관리자 - 주문 목록
 // ============================================
 
+requireAdmin();
+
 let currentStatus = 'all';
 
 function renderFilterTabs() {

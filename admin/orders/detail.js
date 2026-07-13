@@ -2,6 +2,8 @@
 // 관리자 - 주문 상세
 // ============================================
 
+requireAdmin();
+
 function getOrderIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
   return params.get('id');

@@ -457,7 +457,10 @@ const CURRENT_USER_KEY = 'cafe_current_user';
 
 function getUsers() {
   const data = localStorage.getItem(USERS_KEY);
-  return data ? JSON.parse(data) : [];
+  if (data) return JSON.parse(data);
+  const seeded = [{ id: 'admin', name: '관리자', email: 'admin@cafe.com', password: 'admin1234', isAdmin: true }];
+  saveUsers(seeded);
+  return seeded;
 }
 
 function saveUsers(users) {
@@ -525,6 +528,15 @@ function renderAuthNav() {
 }
 
 document.addEventListener('DOMContentLoaded', renderAuthNav);
+
+// ---- 관리자 페이지 접근 제한 (admin 페이지 스크립트 최상단에서 호출) ----
+function requireAdmin() {
+  const user = getCurrentUser();
+  if (user && user.isAdmin) return;
+  const utilsScript = document.querySelector('script[src$="js/utils.js"]');
+  const prefix = utilsScript ? utilsScript.getAttribute('src').replace('js/utils.js', '') : '';
+  window.location.replace(prefix + 'index.html');
+}
 
 // ============================================
 // DOM 헬퍼

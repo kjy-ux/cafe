@@ -2,6 +2,8 @@
 // 관리자 - 대시보드
 // ============================================
 
+requireAdmin();
+
 function renderStats() {
   const menus = getMenus();
   const orders = getOrders();

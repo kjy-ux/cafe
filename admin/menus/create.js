@@ -2,6 +2,8 @@
 // 관리자 - 메뉴 추가
 // ============================================
 
+requireAdmin();
+
 function populateCategoryOptions() {
   $('#category').innerHTML = CATEGORIES.map(c =>
     `<option value="${c.id}">${c.name}</option>`
