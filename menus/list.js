@@ -21,7 +21,16 @@ function renderMenuGrid() {
   const grid = $('#menuGrid');
 
   if (menus.length === 0) {
-    grid.innerHTML = `<p class="empty-state">${keyword ? '검색 결과가 없습니다.' : '등록된 메뉴가 없습니다.'}</p>`;
+    grid.innerHTML = keyword
+      ? `<div class="empty-state">
+          <span class="empty-state__icon" aria-hidden="true">🔍</span>
+          <p class="empty-state__title">'${escapeHtml(currentSearch.trim())}'에 대한 검색 결과가 없습니다</p>
+          <p class="empty-state__desc">다른 검색어로 시도해보세요</p>
+        </div>`
+      : `<div class="empty-state">
+          <span class="empty-state__icon" aria-hidden="true">☕</span>
+          <p class="empty-state__title">등록된 메뉴가 없습니다</p>
+        </div>`;
     return;
   }
 

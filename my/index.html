@@ -47,7 +47,10 @@
         <a href="../menus/list.html">메뉴 보러가기 →</a>
       </div>
       <div class="menu-grid" id="favoriteGrid"></div>
-      <p class="empty-state" id="favoriteEmptyState" hidden>아직 찜한 메뉴가 없습니다.</p>
+      <div class="empty-state" id="favoriteEmptyState" hidden>
+        <span class="empty-state__icon" aria-hidden="true">🤍</span>
+        <p class="empty-state__title">아직 찜한 메뉴가 없습니다</p>
+      </div>
     </section>
 
     <section class="my-recent">
@@ -56,7 +59,10 @@
         <a href="../orders/list.html">전체보기 →</a>
       </div>
       <div class="order-list" id="recentOrders"></div>
-      <p class="empty-state" id="emptyState" hidden>아직 주문 내역이 없습니다.</p>
+      <div class="empty-state" id="emptyState" hidden>
+        <span class="empty-state__icon" aria-hidden="true">🧾</span>
+        <p class="empty-state__title">아직 주문 내역이 없습니다</p>
+      </div>
     </section>
   </main>
 

@@ -247,8 +247,27 @@
 
 .empty-state {
   text-align: center;
-  padding: var(--sp-3xl) 0;
+  padding: var(--sp-3xl) var(--sp-lg);
+}
+
+.empty-state__icon {
+  display: block;
+  font-size: 48px;
+  margin-bottom: var(--sp-md);
+  opacity: 0.55;
+}
+
+.empty-state__title {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--sp-xs);
+}
+
+.empty-state__desc {
   color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--sp-lg);
 }
 
 /* ===== 반응형 ===== */

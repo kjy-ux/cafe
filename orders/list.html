@@ -27,9 +27,12 @@
 
     <div class="order-list" id="orderList"></div>
 
-    <p class="empty-state" id="emptyState" hidden>
-      주문 내역이 없습니다. <a href="../menus/list.html">메뉴 보러 가기</a>
-    </p>
+    <div class="empty-state" id="emptyState" hidden>
+      <span class="empty-state__icon" aria-hidden="true">🧾</span>
+      <p class="empty-state__title">주문 내역이 없습니다</p>
+      <p class="empty-state__desc">첫 주문을 시작해보세요</p>
+      <a href="../menus/list.html" class="btn btn-primary">메뉴 보러 가기</a>
+    </div>
   </main>
 
   <script src="../js/data.js"></script>
