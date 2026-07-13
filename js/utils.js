@@ -476,7 +476,7 @@ const CURRENT_USER_KEY = 'cafe_current_user';
 function getUsers() {
   const data = localStorage.getItem(USERS_KEY);
   if (data) return JSON.parse(data);
-  const seeded = [{ id: 'admin', name: '관리자', email: '111@111', password: '111111', isAdmin: true }];
+  const seeded = [{ id: 'admin', name: '관리자', email: '1111111111', password: '1111111111', isAdmin: true }];
   saveUsers(seeded);
   return seeded;
 }
