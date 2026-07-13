@@ -1,28 +1,28 @@
 :root {
-  /* ===== 브랜드 색상 ===== */
-  --color-primary:        #5C3D2E;
-  --color-primary-light:  #8B6914;
-  --color-primary-dark:   #3E2723;
-  --color-secondary:      #D7CCC8;
-  --color-accent:         #FFAB40;
+  /* ===== 브랜드 색상 (웜 뉴트럴 부티크 팔레트) ===== */
+  --color-primary:        #4A3B32;
+  --color-primary-light:  #C08552;
+  --color-primary-dark:   #2E241D;
+  --color-secondary:      #E6D9C6;
+  --color-accent:         #7E8F6D;
   --color-danger:         #C0392B;
   --color-success:        #2E7D32;
 
   /* ===== 배경 ===== */
-  --bg-page:        #FAF6F1;
-  --bg-card:        rgba(255, 255, 255, 0.7);
-  --bg-card-hover:  rgba(255, 255, 255, 0.95);
+  --bg-page:        #F7EFE4;
+  --bg-card:        rgba(255, 253, 250, 0.85);
+  --bg-card-hover:  rgba(255, 253, 250, 1);
   --bg-overlay:     rgba(0, 0, 0, 0.3);
 
   /* ===== 텍스트 ===== */
-  --text-primary:   #3E2723;
-  --text-secondary: #795548;
-  --text-muted:     #A1887F;
+  --text-primary:   #3E2f27;
+  --text-secondary: #7a6a5c;
+  --text-muted:     #a8988a;
   --text-on-primary: #FFFFFF;
 
   /* ===== 보더 ===== */
-  --border-color:   #D7CCC8;
-  --border-radius:  12px;
+  --border-color:   #E6D9C6;
+  --border-radius:  16px;
   --border-radius-sm: 8px;
 
   /* ===== 간격 (8pt 그리드) ===== */
