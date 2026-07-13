@@ -336,6 +336,10 @@
     justify-content: space-between;
     font-size: var(--font-size-sm);
   }
+  .auth-nav {
+    margin-left: 0;
+    margin-top: var(--sp-xs);
+  }
   .basket-summary {
     flex-direction: column;
     align-items: stretch;

@@ -360,6 +360,10 @@
     justify-content: space-between;
     font-size: var(--font-size-sm);
   }
+  .auth-nav {
+    margin-left: 0;
+    margin-top: var(--sp-xs);
+  }
   .menu-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: var(--sp-md);
