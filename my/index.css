@@ -54,6 +54,36 @@
   margin-bottom: var(--sp-lg);
 }
 
+.page-subtitle {
+  margin-bottom: var(--sp-lg);
+  color: var(--text-secondary);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--sp-md);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.back-link:hover {
+  color: var(--color-primary);
+}
+
+/* ===== 나만의 메뉴 페이지: 찜한 메뉴 + 레시피 나란히 ===== */
+.my-favorites-page {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--sp-2xl);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .my-favorites-page {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== 요약 카드 ===== */
 .my-summary {
   display: grid;
@@ -90,7 +120,7 @@
 /* ===== 바로가기 ===== */
 .my-shortcuts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: var(--sp-md);
   margin-bottom: var(--sp-2xl);
 }

@@ -360,6 +360,94 @@ function addRecipeToCart(recipe) {
   showToast(`'${recipe.name}' 레시피를 장바구니에 담았습니다.`);
 }
 
+// ---- 즐겨찾기/레시피 렌더링 (마이페이지, 나만의 메뉴 페이지 공용) ----
+// 대상 페이지에 #favoriteGrid/#favoriteEmptyState, #recipeList/#recipeEmptyState 요소가 있어야 함
+function renderFavorites() {
+  const grid = $('#favoriteGrid');
+  const emptyState = $('#favoriteEmptyState');
+  if (!grid) return;
+
+  const menus = getFavorites().map(id => getMenuById(id)).filter(Boolean);
+
+  if (menus.length === 0) {
+    grid.innerHTML = '';
+    emptyState.hidden = false;
+    return;
+  }
+  emptyState.hidden = true;
+
+  renderList(grid, menus, (menu) => `
+    <div class="menu-card" data-id="${menu.id}">
+      <div class="menu-card__image-wrap">
+        <a href="../menus/detail.html?id=${menu.id}" class="menu-card__image-link">
+          ${menu.image
+            ? `<img src="${escapeHtml(menu.image)}" alt="${escapeHtml(menu.name)}">`
+            : '<div class="menu-card__no-image">☕</div>'}
+        </a>
+        <button type="button" class="menu-card__favorite is-active" data-favorite="${menu.id}" aria-label="즐겨찾기 해제">♥</button>
+      </div>
+      <div class="menu-card__body">
+        <span class="menu-card__category">${getCategoryName(menu.category)}</span>
+        <a href="../menus/detail.html?id=${menu.id}" class="menu-card__name">${escapeHtml(menu.name)}</a>
+        <p class="menu-card__price">${formatPrice(menu.price)}</p>
+      </div>
+    </div>
+  `);
+}
+
+function handleFavoriteGridClick(e) {
+  const favBtn = e.target.closest('[data-favorite]');
+  if (!favBtn) return;
+  toggleFavorite(Number(favBtn.dataset.favorite));
+  renderFavorites();
+}
+
+function renderRecipes() {
+  const list = $('#recipeList');
+  const emptyState = $('#recipeEmptyState');
+  if (!list) return;
+
+  const recipes = getRecipes().slice().reverse();
+
+  if (recipes.length === 0) {
+    list.innerHTML = '';
+    emptyState.hidden = false;
+    return;
+  }
+  emptyState.hidden = true;
+
+  renderList(list, recipes, (recipe) => {
+    const label = formatOptionsLabel(recipe.category, recipe.options);
+    return `
+      <div class="recipe-card" data-id="${recipe.id}">
+        <div class="recipe-card__info">
+          <span class="recipe-card__name">${escapeHtml(recipe.name)}</span>
+          <span class="recipe-card__detail">${escapeHtml(recipe.menuName)}${label ? ` · ${escapeHtml(label)}` : ''}</span>
+          <span class="recipe-card__price">${formatPrice(recipe.unitPrice)}</span>
+        </div>
+        <div class="recipe-card__actions">
+          <button class="btn btn-sm" data-recipe-reorder="${recipe.id}">담기</button>
+          <button class="recipe-card__delete" data-recipe-delete="${recipe.id}" aria-label="레시피 삭제">✕</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function handleRecipeListClick(e) {
+  const reorderBtn = e.target.closest('[data-recipe-reorder]');
+  if (reorderBtn) {
+    const recipe = getRecipes().find(r => r.id === reorderBtn.dataset.recipeReorder);
+    if (recipe) addRecipeToCart(recipe);
+    return;
+  }
+  const deleteBtn = e.target.closest('[data-recipe-delete]');
+  if (deleteBtn) {
+    deleteRecipe(deleteBtn.dataset.recipeDelete);
+    renderRecipes();
+  }
+}
+
 // ============================================
 // DOM 헬퍼
 // ============================================
