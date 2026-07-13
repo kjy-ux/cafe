@@ -511,6 +511,7 @@ function renderAuthNav() {
 
   if (user) {
     container.innerHTML = `
+      ${user.isAdmin ? `<a href="${prefix}admin/index.html">관리자 페이지</a>` : ''}
       <span class="auth-nav__user">${escapeHtml(user.name)}님</span>
       <button type="button" class="auth-nav__logout" id="logoutBtn">로그아웃</button>
     `;
