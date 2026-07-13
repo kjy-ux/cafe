@@ -48,6 +48,50 @@ function handleFavoriteGridClick(e) {
   renderFavorites();
 }
 
+function renderRecipes() {
+  const recipes = getRecipes().slice().reverse();
+  const list = $('#recipeList');
+  const emptyState = $('#recipeEmptyState');
+
+  if (recipes.length === 0) {
+    list.innerHTML = '';
+    emptyState.hidden = false;
+    return;
+  }
+  emptyState.hidden = true;
+
+  renderList(list, recipes, (recipe) => {
+    const label = formatOptionsLabel(recipe.category, recipe.options);
+    return `
+      <div class="recipe-card" data-id="${recipe.id}">
+        <div class="recipe-card__info">
+          <span class="recipe-card__name">${escapeHtml(recipe.name)}</span>
+          <span class="recipe-card__detail">${escapeHtml(recipe.menuName)}${label ? ` · ${escapeHtml(label)}` : ''}</span>
+          <span class="recipe-card__price">${formatPrice(recipe.unitPrice)}</span>
+        </div>
+        <div class="recipe-card__actions">
+          <button class="btn btn-sm" data-recipe-reorder="${recipe.id}">담기</button>
+          <button class="recipe-card__delete" data-recipe-delete="${recipe.id}" aria-label="레시피 삭제">✕</button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function handleRecipeListClick(e) {
+  const reorderBtn = e.target.closest('[data-recipe-reorder]');
+  if (reorderBtn) {
+    const recipe = getRecipes().find(r => r.id === reorderBtn.dataset.recipeReorder);
+    if (recipe) addRecipeToCart(recipe);
+    return;
+  }
+  const deleteBtn = e.target.closest('[data-recipe-delete]');
+  if (deleteBtn) {
+    deleteRecipe(deleteBtn.dataset.recipeDelete);
+    renderRecipes();
+  }
+}
+
 function renderRecentOrders() {
   const orders = getOrders().slice().reverse().slice(0, 3);
   const container = $('#recentOrders');
@@ -92,9 +136,11 @@ function init() {
   renderCartBadge();
   renderSummary();
   renderFavorites();
+  renderRecipes();
   renderRecentOrders();
   $('#recentOrders').addEventListener('click', handleReorderClick);
   $('#favoriteGrid').addEventListener('click', handleFavoriteGridClick);
+  $('#recipeList').addEventListener('click', handleRecipeListClick);
 }
 
 document.addEventListener('DOMContentLoaded', init);

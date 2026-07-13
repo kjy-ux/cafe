@@ -84,6 +84,15 @@ function renderMenuDetail(container, menu) {
         </div>
         <button id="addToCartBtn" class="btn btn-primary">장바구니 담기 · <span id="totalPrice">${formatPrice(menu.price)}</span></button>
       </div>
+      ${(CATEGORY_OPTIONS[menu.category] || []).length > 0 ? `
+        <div class="recipe-save">
+          <span class="recipe-save__label">이 조합, 나만의 레시피로 저장해두면 다음에 한 번에 다시 담을 수 있어요.</span>
+          <div class="recipe-save__row">
+            <input type="text" id="recipeName" class="recipe-save__input" placeholder="레시피 이름 (예: 여름 바닐라 아이스)" maxlength="20">
+            <button type="button" id="saveRecipeBtn" class="btn btn-outline">레시피 저장</button>
+          </div>
+        </div>
+      ` : ''}
     </div>
   `;
 
@@ -119,6 +128,23 @@ function renderMenuDetail(container, menu) {
     const label = formatOptionsLabel(menu.category, options);
     showToast(`'${menu.name}'${label ? ` (${label})` : ''} ${quantity}개를 장바구니에 담았습니다.`);
   });
+
+  const saveRecipeBtn = $('#saveRecipeBtn');
+  if (saveRecipeBtn) {
+    saveRecipeBtn.addEventListener('click', () => {
+      const nameInput = $('#recipeName');
+      const name = nameInput.value.trim();
+      if (!name) {
+        showToast('레시피 이름을 입력해주세요.', 'error');
+        nameInput.focus();
+        return;
+      }
+      const options = getSelectedOptions(menu);
+      addRecipe(name, menu, options);
+      showToast(`'${name}' 레시피로 저장했습니다. 마이페이지에서 확인하세요.`);
+      nameInput.value = '';
+    });
+  }
 }
 
 function init() {

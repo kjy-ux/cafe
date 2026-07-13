@@ -56,13 +56,38 @@ const MENU_OPTIONS = {
       { id: 'extra1', name: '1샷 추가', priceDelta: 500 },
       { id: 'extra2', name: '2샷 추가', priceDelta: 1000 }
     ]
+  },
+  milk: {
+    label: '우유 변경',
+    choices: [
+      { id: 'regular', name: '일반 우유', priceDelta: 0 },
+      { id: 'skim', name: '저지방 우유', priceDelta: 300 },
+      { id: 'soy', name: '두유', priceDelta: 700 },
+      { id: 'oat', name: '오트밀크', priceDelta: 700 }
+    ]
+  },
+  syrup: {
+    label: '시럽',
+    choices: [
+      { id: 'none', name: '없음', priceDelta: 0 },
+      { id: 'vanilla', name: '바닐라', priceDelta: 300 },
+      { id: 'caramel', name: '카라멜', priceDelta: 300 },
+      { id: 'hazelnut', name: '헤이즐넛', priceDelta: 300 }
+    ]
+  },
+  whip: {
+    label: '휘핑크림',
+    choices: [
+      { id: 'none', name: '없음', priceDelta: 0 },
+      { id: 'add', name: '휘핑크림 추가', priceDelta: 500 }
+    ]
   }
 };
 
 // 카테고리별로 적용되는 옵션 종류 (베이커리/디저트는 옵션 없음)
 const CATEGORY_OPTIONS = {
-  coffee: ['temperature', 'size', 'shot'],
-  tea: ['temperature', 'size'],
+  coffee: ['temperature', 'size', 'shot', 'milk', 'syrup', 'whip'],
+  tea: ['temperature', 'size', 'syrup'],
   bakery: [],
   dessert: []
 };

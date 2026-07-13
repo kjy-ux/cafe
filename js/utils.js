@@ -312,6 +312,55 @@ function toggleFavorite(menuId) {
 }
 
 // ============================================
+// 나만의 레시피 (localStorage) - 옵션을 조합해 이름 붙여 저장, 재주문
+// ============================================
+
+const RECIPES_KEY = 'cafe_recipes';
+
+function getRecipes() {
+  const data = localStorage.getItem(RECIPES_KEY);
+  return data ? JSON.parse(data) : [];
+}
+
+function saveRecipes(recipes) {
+  localStorage.setItem(RECIPES_KEY, JSON.stringify(recipes));
+}
+
+function addRecipe(name, menu, options) {
+  const recipes = getRecipes();
+  const unitPrice = menu.price + getOptionsPriceDelta(menu.category, options);
+  const recipe = {
+    id: generateId(),
+    name,
+    menuId: menu.id,
+    menuName: menu.name,
+    category: menu.category,
+    options,
+    unitPrice,
+    createdAt: new Date().toISOString()
+  };
+  recipes.push(recipe);
+  saveRecipes(recipes);
+  return recipe;
+}
+
+function deleteRecipe(id) {
+  const recipes = getRecipes().filter(r => r.id !== id);
+  saveRecipes(recipes);
+}
+
+// ---- 저장된 레시피를 장바구니에 담기 (고객 페이지 전용) ----
+function addRecipeToCart(recipe) {
+  if (!getMenuById(recipe.menuId)) {
+    showToast('현재 판매하지 않는 메뉴라 담을 수 없습니다.', 'error');
+    return;
+  }
+  addToCart(recipe.menuId, 1, recipe.options);
+  renderCartBadge();
+  showToast(`'${recipe.name}' 레시피를 장바구니에 담았습니다.`);
+}
+
+// ============================================
 // DOM 헬퍼
 // ============================================
 

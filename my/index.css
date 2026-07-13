@@ -244,6 +244,74 @@
   gap: var(--sp-md);
 }
 
+.recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.recipe-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-md);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-sm);
+  padding: var(--sp-md) var(--sp-lg);
+  transition: box-shadow var(--transition-fast);
+}
+
+.recipe-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.recipe-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recipe-card__name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.recipe-card__detail {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.recipe-card__price {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.recipe-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  flex-shrink: 0;
+}
+
+.recipe-card__delete {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  padding: var(--sp-xs);
+}
+
+.recipe-card__delete:hover {
+  color: var(--color-danger);
+}
+
 .order-card {
   display: flex;
   flex-direction: column;
@@ -335,6 +403,12 @@
 .empty-state__title {
   font-weight: 700;
   color: var(--text-primary);
+}
+
+.empty-state__desc {
+  margin-top: var(--sp-xs);
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
 }
 
 /* ===== 반응형 ===== */
