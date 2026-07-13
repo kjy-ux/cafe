@@ -88,19 +88,27 @@ function formatDate(date) {
   return `${y}-${m}-${day} ${h}:${min}`;
 }
 
+// ---- 로그인한 사용자별로 데이터를 나누기 위한 소유자 식별자 (비로그인 시 'guest') ----
+function getOwnerId() {
+  const user = getCurrentUser();
+  return user ? user.email : 'guest';
+}
+
 // ============================================
-// 장바구니 (localStorage)
+// 장바구니 (localStorage, 사용자별 분리)
 // ============================================
 
-const CART_KEY = 'cafe_cart';
+function getCartKey() {
+  return `cafe_cart_${getOwnerId()}`;
+}
 
 function getCart() {
-  const data = localStorage.getItem(CART_KEY);
+  const data = localStorage.getItem(getCartKey());
   return data ? JSON.parse(data) : [];
 }
 
 function saveCart(cart) {
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  localStorage.setItem(getCartKey(), JSON.stringify(cart));
 }
 
 function addToCart(menuId, quantity = 1, options = {}) {
@@ -233,6 +241,7 @@ function createOrder(items, total) {
   const orders = getOrders();
   const order = {
     id: generateId(),
+    ownerId: getOwnerId(),
     items,
     total,
     status: ORDER_STATUS.PENDING.value,
@@ -247,6 +256,11 @@ function createOrder(items, total) {
 function getOrderById(id) {
   const orders = getOrders();
   return orders.find(o => o.id === id);
+}
+
+// ---- 로그인한(또는 게스트) 사용자 본인의 주문만 (고객 페이지 전용, 관리자는 getOrders() 그대로 사용) ----
+function getMyOrders() {
+  return getOrders().filter(o => o.ownerId === getOwnerId());
 }
 
 // ---- 재주문: 지난 주문의 아이템을 장바구니에 다시 담기 (고객 페이지 전용) ----
@@ -282,18 +296,20 @@ function updateOrderStatus(id, status) {
 }
 
 // ============================================
-// 즐겨찾기 (localStorage)
+// 즐겨찾기 (localStorage, 사용자별 분리)
 // ============================================
 
-const FAVORITES_KEY = 'cafe_favorites';
+function getFavoritesKey() {
+  return `cafe_favorites_${getOwnerId()}`;
+}
 
 function getFavorites() {
-  const data = localStorage.getItem(FAVORITES_KEY);
+  const data = localStorage.getItem(getFavoritesKey());
   return data ? JSON.parse(data) : [];
 }
 
 function saveFavorites(favorites) {
-  localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+  localStorage.setItem(getFavoritesKey(), JSON.stringify(favorites));
 }
 
 function isFavorite(menuId) {
@@ -312,18 +328,20 @@ function toggleFavorite(menuId) {
 }
 
 // ============================================
-// 나만의 레시피 (localStorage) - 옵션을 조합해 이름 붙여 저장, 재주문
+// 나만의 레시피 (localStorage, 사용자별 분리) - 옵션을 조합해 이름 붙여 저장, 재주문
 // ============================================
 
-const RECIPES_KEY = 'cafe_recipes';
+function getRecipesKey() {
+  return `cafe_recipes_${getOwnerId()}`;
+}
 
 function getRecipes() {
-  const data = localStorage.getItem(RECIPES_KEY);
+  const data = localStorage.getItem(getRecipesKey());
   return data ? JSON.parse(data) : [];
 }
 
 function saveRecipes(recipes) {
-  localStorage.setItem(RECIPES_KEY, JSON.stringify(recipes));
+  localStorage.setItem(getRecipesKey(), JSON.stringify(recipes));
 }
 
 function addRecipe(name, menu, options) {
@@ -517,8 +535,7 @@ function renderAuthNav() {
     `;
     $('#logoutBtn', container).addEventListener('click', () => {
       logout();
-      renderAuthNav();
-      showToast('로그아웃 되었습니다.');
+      window.location.reload();
     });
   } else {
     container.innerHTML = `

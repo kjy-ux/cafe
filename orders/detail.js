@@ -54,7 +54,7 @@ function init() {
   const container = $('#orderDetail');
   const order = getOrderById(getOrderIdFromUrl());
 
-  if (!order) {
+  if (!order || order.ownerId !== getOwnerId()) {
     renderNotFound(container);
     return;
   }

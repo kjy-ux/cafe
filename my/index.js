@@ -3,7 +3,7 @@
 // ============================================
 
 function renderSummary() {
-  const orders = getOrders();
+  const orders = getMyOrders();
   const totalSpent = orders.reduce((sum, o) => sum + o.total, 0);
 
   $('#totalOrders').textContent = `${orders.length}건`;
@@ -11,7 +11,7 @@ function renderSummary() {
 }
 
 function renderRecentOrders() {
-  const orders = getOrders().slice().reverse().slice(0, 3);
+  const orders = getMyOrders().slice().reverse().slice(0, 3);
   const container = $('#recentOrders');
   const emptyState = $('#emptyState');
 

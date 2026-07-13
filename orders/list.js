@@ -3,7 +3,7 @@
 // ============================================
 
 function renderOrderList() {
-  const orders = getOrders().slice().reverse();
+  const orders = getMyOrders().slice().reverse();
   const container = $('#orderList');
   const emptyState = $('#emptyState');
 
