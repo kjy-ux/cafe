@@ -101,6 +101,6 @@ const ORDER_STATUS = {
   CONFIRMED:  { value: 'confirmed', label: '확인됨' },
   PREPARING:  { value: 'preparing', label: '조리중' },
   READY:      { value: 'ready',     label: '준비완료' },
-  COMPLETED:  { value: 'completed', label: '완료' },
+  COMPLETED:  { value: 'completed', label: '픽업 완료' },
   CANCELLED:  { value: 'cancelled', label: '취소' }
 };
