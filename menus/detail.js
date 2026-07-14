@@ -166,6 +166,7 @@ function renderMenuDetail(container, menu) {
     const options = getSelectedOptions(menu);
     addToCart(menu.id, quantity, options);
     renderCartBadge();
+    renderMiniCart();
     const label = formatOptionsLabel(menu.category, options);
     showToast(`'${menu.name}'${label ? ` (${label})` : ''} ${quantity}개를 장바구니에 담았습니다.`);
   });
@@ -189,11 +190,41 @@ function renderMenuDetail(container, menu) {
   }
 }
 
+function renderMiniCart() {
+  const panel = $('#miniCart');
+  const list = $('#miniCartList');
+  const cart = getCart();
+
+  if (cart.length === 0) {
+    panel.hidden = true;
+    return;
+  }
+  panel.hidden = false;
+
+  renderList(list, cart, (item) => {
+    const cartMenu = getMenuById(item.menuId);
+    const image = cartMenu && cartMenu.image;
+    const label = formatOptionsLabel(item.category, item.options);
+    return `
+      <div class="mini-cart__item">
+        <div class="mini-cart__item-image">
+          ${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(item.name)}">` : ''}
+        </div>
+        <div class="mini-cart__item-body">
+          <span class="mini-cart__item-name">${escapeHtml(item.name)}</span>
+          <span class="mini-cart__item-meta">${label ? `${escapeHtml(label)} · ` : ''}${item.quantity}개</span>
+        </div>
+      </div>
+    `;
+  });
+}
+
 function init() {
   const container = $('#detailCard');
   const menu = getMenuById(getMenuIdFromUrl());
 
   renderCartBadge();
+  renderMiniCart();
 
   if (!menu) {
     renderNotFound(container);
