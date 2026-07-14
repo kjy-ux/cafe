@@ -98,6 +98,5 @@ const CATEGORY_OPTIONS = {
 
 const ORDER_STATUS = {
   PENDING:    { value: 'pending',   label: '결제 완료' },
-  COMPLETED:  { value: 'completed', label: '픽업 완료' },
   CANCELLED:  { value: 'cancelled', label: '취소' }
 };

@@ -245,8 +245,7 @@ function createOrder(items, total) {
     items,
     total,
     status: ORDER_STATUS.PENDING.value,
-    createdAt: new Date().toISOString(),
-    completedAt: null
+    createdAt: new Date().toISOString()
   };
   orders.push(order);
   saveOrders(orders);
@@ -288,9 +287,6 @@ function updateOrderStatus(id, status) {
   const order = orders.find(o => o.id === id);
   if (order) {
     order.status = status;
-    if (status === ORDER_STATUS.COMPLETED.value) {
-      order.completedAt = new Date().toISOString();
-    }
     saveOrders(orders);
   }
 }
